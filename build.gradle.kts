@@ -24,6 +24,7 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1")
+	implementation("org.mariadb.jdbc:mariadb-java-client:2.4.1")
 	implementation("javax.servlet:jstl")
 	implementation("org.apache.tomcat.embed:tomcat-embed-jasper")
 	compileOnly("org.projectlombok:lombok")
