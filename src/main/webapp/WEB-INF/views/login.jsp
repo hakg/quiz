@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/static/css/login.css">
 </head>
 <body class="align">
   <div class="grid">

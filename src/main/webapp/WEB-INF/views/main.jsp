@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Title</title>
-    <script src="/resources/static/js/vue.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/static/js/vue.js"></script>
 </head>
 <body>
     <!-- Vue.js를 사용한 내용 작성 -->
@@ -18,7 +18,7 @@
         new Vue({
             el: '#app',
             data: {
-                message: 'Hello, Vue!'
+                message: 'Hello3, Vue!'
             }
         });
     </script>
