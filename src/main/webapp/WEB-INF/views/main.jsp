@@ -21,6 +21,7 @@
                 message: 'Hello3, Vue!'
             }
         });
+
     </script>
 </body>
 </html>

@@ -7,4 +7,5 @@
  - mybatis 2.3.1
  - mariaDB 2.4.1
  - spring security 2.7.13
- - vue.js
+ - vue.js 2.7.14
+ - vue-router.js 3.5.3

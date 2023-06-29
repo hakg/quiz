@@ -1,6 +1,7 @@
 package com.quiz.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,7 +23,7 @@ public class WebSecurityController {
         return "access-denied"; // 접근 거부 페이지로 이동
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
+   @GetMapping("/test")
     public String test() {
         return "main"; // 접근 거부 페이지로 이동
     }
