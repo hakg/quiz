@@ -23,10 +23,11 @@ public class WebSecurityConfig {
         return http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login").permitAll() // 로그인 페이지는 인증 없이 접근 가능하도록 설정
+                .antMatchers("/test").permitAll()
                 .anyRequest().authenticated() // 다른 요청은 인증이 필요하도록 설정
                 .and()
                 .formLogin()
-                .loginPage("/login") // 로그인 페이지 설정
+                .loginPage("/hello") // 로그인 페이지 설정
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout") // 로그아웃 후 리디렉션될 경로 설정

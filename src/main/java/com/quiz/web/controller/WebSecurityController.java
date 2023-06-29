@@ -21,4 +21,9 @@ public class WebSecurityController {
     public String accessDenied() {
         return "access-denied"; // 접근 거부 페이지로 이동
     }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+        return "main"; // 접근 거부 페이지로 이동
+    }
 }
