@@ -55,14 +55,14 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">Login</a>
+                                        <a href="/login" class="btn btn-primary btn-user btn-block">Login</a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="signup.jsp" >Create an Account!</a>
+                                        <a class="small" href="/signup" >Create an Account!</a>
                                     </div>
                                 </div>
                             </div>
