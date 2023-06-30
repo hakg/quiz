@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class WebSecurityController {
     
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping(value = "/login")
     public String login() {
         return "login"; // 로그인 페이지로 이동
+    }
+    @GetMapping(value = "/signup")
+    public String signup() {
+        return "signup"; // 로그인 페이지로 이동
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
@@ -23,8 +27,8 @@ public class WebSecurityController {
         return "access-denied"; // 접근 거부 페이지로 이동
     }
 
-   @GetMapping("/test")
-    public String test() {
-        return "main"; // 접근 거부 페이지로 이동
-    }
+//   @GetMapping("/test")
+//    public String test() {
+//        return "main"; // 접근 거부 페이지로 이동
+//    }
 }
