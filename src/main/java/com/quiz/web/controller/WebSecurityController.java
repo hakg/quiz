@@ -27,8 +27,8 @@ public class WebSecurityController {
         return "access-denied"; // 접근 거부 페이지로 이동
     }
 
-//   @GetMapping("/test")
-//    public String test() {
-//        return "main"; // 접근 거부 페이지로 이동
-//    }
+   @GetMapping("/main")
+    public String test() {
+        return "index"; // 접근 거부 페이지로 이동
+    }
 }
