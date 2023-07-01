@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.quiz.apps.mapper.AccountMapper">
+
+    <insert id="insertUser" parameterType="com.quiz.apps.domain.User">
+        INSERT
+          INTO USER
+             ( user_id
+             , email
+             , pwd )
+        VALUES
+             ( #{userId}
+             , #{email}
+             , #{pwd} )
+    </insert>
+
+    <select id="findByEmail" parameterType="String" resultType="com.quiz.apps.domain.User">
+        SELECT *
+        FROM tb_user
+        WHERE email = #{email}
+    </select>
+
+</mapper>

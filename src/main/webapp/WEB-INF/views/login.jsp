@@ -1,4 +1,4 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Quiz Login</title>
+    <title>QuizApp 로그인</title>
     
     <!-- Custom fonts for this template-->
     <link href="/resources/static/bootstrap/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,9 +25,7 @@
     <div class="container">
         <!-- Outer Row -->
         <div class="row justify-content-center">
-
             <div class="col-xl-10 col-lg-12 col-md-9">
-
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
@@ -41,28 +39,27 @@
                                     <form class="user">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                                id="email" aria-describedby="emailHelp"
+                                                placeholder="이메일 입력">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="password" placeholder="패스워드 입력">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">로그인정보 저장</label>
                                             </div>
                                         </div>
-                                        <a href="/login" class="btn btn-primary btn-user btn-block">Login</a>
+                                        <button id="loginBtn" class="btn btn-primary btn-user btn-block">로그인</a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                        <a class="small" href="forgot-password.html">비밀번호 찾기</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="/signup" >Create an Account!</a>
+                                        <a class="small" href="/signup" >회원가입</a>
                                     </div>
                                 </div>
                             </div>
@@ -70,9 +67,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -83,8 +78,7 @@
 
     <!-- Vue.js -->
     <script src="/resources/static/js/vue/vue.js"></script>
-    <script src="/resources/static/js/vue/login.js"></script>
+    <script src="/resources/static/js/account.js"></script>
 
 </body>
-
 </html>

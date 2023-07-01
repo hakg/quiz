@@ -2,6 +2,7 @@ package com.quiz.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -9,7 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class WebSecurityController {
     
     @GetMapping(value = "/login")
+    public String loginForm() {
+        return "login"; // 로그인 페이지로 이동
+    }
+    @PostMapping(value = "/login")
     public String login() {
+
         return "login"; // 로그인 페이지로 이동
     }
     @GetMapping(value = "/signup")
@@ -17,7 +23,7 @@ public class WebSecurityController {
         return "signup"; // 로그인 페이지로 이동
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @PostMapping(value = "/")
     public String loginPost() {
         return "main"; // 인증 성공 시 리디렉션할 경로를 반환
     }

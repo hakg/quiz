@@ -1,0 +1,14 @@
+# 마리아 디비 세팅 참고 사이트
+ ㄴ cmd root 계정으로 처리시 - http://ducj3.iptime.org/mariadb/
+ ㄴ
+
+# USER 테이블 생성 스키마
+CREATE TABLE `USER` (
+  `email` varchar(100) NOT NULL,
+  `userName` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `userGubun` varchar(50) NOT NULL,
+  `lastLoginDate` datetime DEFAULT NULL,
+  `passwordUpdateDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`email`)
+);

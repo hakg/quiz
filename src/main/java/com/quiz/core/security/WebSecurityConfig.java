@@ -20,7 +20,7 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.csrf().disable()
+        return http.csrf().disable() // CSRF 보안 설정 해제 (테스트 시 간단하게 사용하기 위함)
                 .authorizeRequests()
                 .antMatchers("/login", "/signup", "/main").permitAll() // 로그인&회원가입 페이지는 인증 없이 접근 가능하도록 설정
                 .anyRequest().authenticated() // 다른 요청은 인증이 필요하도록 설정
@@ -31,7 +31,7 @@ public class WebSecurityConfig {
                 .logout()
                 .logoutSuccessUrl("/login?logout") // 로그아웃 후 리디렉션될 경로 설정
                 .and()
-                .build(); // CSRF 보안 설정 해제 (테스트 시 간단하게 사용하기 위함)
+                .build();
     }
 
     @Bean
