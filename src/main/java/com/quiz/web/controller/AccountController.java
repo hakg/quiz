@@ -3,7 +3,6 @@ package com.quiz.web.controller;
 import com.quiz.apps.domain.User;
 import com.quiz.apps.service.AccountService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,27 +15,29 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    private final PasswordEncoder passwordEncoder;
 
-    @GetMapping("/login")
+    @GetMapping(value = "/login")
     public String loginForm() {
-        return "login";
+        return "login"; // 로그인 페이지로 이동
+    }
+    @GetMapping(value = "/signup")
+    public String signup() {
+        return "signup"; // 회원가입 페이지로 이동
     }
 
     @PostMapping("/login")
     public String loginSubmit(@RequestParam String email, @RequestParam String password, Model model) {
+        User user = new User();
+        user.setEmail(email);
+        user.setPassword(password);
 
-
-//        accountService.selectAccountInfo();
+        if (accountService.selectAccountCheck(user) <= 0){
+            model.addAttribute("result", "로그인실패");
+        }
 
         // 로그인 성공 시 처리
         model.addAttribute("email", email);
-        return "redirect:/index";
-    }
-
-    @GetMapping("/signup")
-    public String signupForm() {
-        return "signup";
+        return "redirect:index";
     }
 
     @PostMapping("/signup")
@@ -44,25 +45,21 @@ public class AccountController {
         User user = new User();
         user.setUserName(userName);
         user.setEmail(email);
-        user.setPassword(passwordEncoder.encode(password));
+        user.setPassword(password);
 
         if (accountService.insertAccount(user) > 0) {
-            // 회원가입 성공 처리
+            // 회원가입 성공 시 처리
             model.addAttribute("email", email);
+            return "redirect:/index"; // 회원가입 성공 시 대시보드 페이지로 이동
         } else {
             // 회원가입 실패 처리
-            model.addAttribute("result", "로그이실패");
+            model.addAttribute("result", "회원가입 실패");
+            return "redirect:/signup"; // 회원가입 실패 시 회원가입 페이지로 이동
         }
-
-        return "redirect:/login";
     }
 
-    @GetMapping("/dashboard")
-    public String dashboard(Model model) {
-        // 대시보드 페이지 로직 작성
-        // ...
-
-        return "dashboard";
+    @GetMapping("/index")
+    public String index(Model model) {
+        return "index";
     }
-
 }

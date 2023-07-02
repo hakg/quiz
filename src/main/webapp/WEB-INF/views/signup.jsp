@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/resources/static/bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/resources/static/bootstrap/css/sb-admin-2.min.css" rel="stylesheet"  type="text/css">
 </head>
 
 <body class="bg-gradient-primary">
@@ -47,16 +47,14 @@
                                         <input type="password" class="form-control form-control-user" id="repeatPassword" placeholder="패스워드 확인">
                                     </div>
                                 </div>
-                                <div id="signUpBtn" class="btn btn-primary btn-user btn-block">
-                                    회원가입 완료
-                                </div>
+                                <div id="signUpBtn" class="btn btn-primary btn-user btn-block">회원가입 완료</div>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">패스워드 찾기</a>
+                                <a class="small" href="forgot-password.html">비밀번호 찾기</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="/login.jsp">로그인</a>
+                                <a class="small" href="/login">로그인</a>
                             </div>
                         </div>
                     </div>
@@ -67,15 +65,15 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <!-- <script src="/resources/static/bootstrap/jquery/jquery.min.js"></script> -->
-    <!-- <script src="/resources/static/bootstrap/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <script src="/resources/static/bootstrap/jquery/jquery.min.js"></script>
+    <script src="/resources/static/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <!-- <script src="/resources/static/bootstrap/jquery-easing/jquery.easing.min.js"></script> -->
+    <script src="/resources/static/bootstrap/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages -->
-    <!-- <script src="/resources/static/bootstrap/js/sb-admin-2.min.js"></script> -->
+    <script src="/resources/static/bootstrap/js/sb-admin-2.min.js"></script>
+    <script src="/resources/static/js/account.js"></script>
 
 </body>
-
 </html>

@@ -4,6 +4,8 @@ import com.quiz.apps.domain.User;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public class AccountMapper {
-    public int insertAccount(User user);
+public interface AccountMapper {
+    int insertAccount(User user);
+
+    int selectAccountCheck(User user);
 }
