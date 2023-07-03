@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.quiz.apps.mapper.AccountMapper">
+
+    <insert id="insertAccount" parameterType="User">
+        INSERT
+        INTO USER
+        ( EMAIL
+        , USER_NAME
+        , PASSWORD
+        , USER_GUBUN
+        , INSERT_DATE
+        , MODIFY_DATE
+        , LAST_LOGIN_DATE
+        , PASSWORD_UPDATE_DATE )
+        VALUES
+        ( #{email, jdbcType=VARCHAR}
+        , #{userName, jdbcType=VARCHAR}
+        , #{password, jdbcType=VARCHAR}
+        , DEFAULT
+        , NOW()
+        , NOW()
+        , NULL
+        , NOW() )
+    </insert>
+
+    <select id="selectAccountCheck" resultType="int">
+        SELECT COUNT(1)
+        FROM USER UE
+        WHERE UE.EMAIL = #{email, jdbcType=VARCHAR}
+        AND UE.PASSWORD = #{password, jdbcType=VARCHAR}
+    </select>
+</mapper>
