@@ -25,3 +25,12 @@ CREATE TABLE `USER` (
   `PASSWORD_UPDATE_DATE` DATETIME NOT NULL,
   PRIMARY KEY (`EMAIL`)
 );
+
+# Menu 테이블 생성 스키마
+CREATE TABLE `menu` (
+  `menu_code` varchar(10) NOT NULL,
+  `menu_name` varchar(100) NOT NULL,
+  `menu_gubun` char(1) NOT NULL,
+  `parentAuthID` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`menu_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
