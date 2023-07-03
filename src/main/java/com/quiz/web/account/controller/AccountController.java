@@ -1,7 +1,7 @@
 package com.quiz.web.account.controller;
 
-import com.quiz.apps.model.User;
-import com.quiz.apps.service.AccountService;
+import com.quiz.apps.account.model.User;
+import com.quiz.apps.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,13 +30,10 @@ public class AccountController {
         user.setEmail(email);
         user.setPassword(password);
 
-        if (accountService.selectAccountCheck(user) <= 0){
-            model.addAttribute("result", "로그인실패");
-        }
-
+        // 조회태우는거 하지 않고 스프링시큐리티 적용필요
         // 로그인 성공 시 처리
         model.addAttribute("email", email);
-        return "redirect:index";
+        return "redirect:/index";
     }
 
     @PostMapping("/signup")

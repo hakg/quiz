@@ -1,18 +1,18 @@
-package com.quiz.apps.service.impl;
+package com.quiz.apps.account.service.impl;
 
-import com.quiz.apps.mapper.AccountMapper;
-import com.quiz.apps.model.User;
-import com.quiz.apps.service.AccountService;
+import com.quiz.apps.account.mapper.AccountMapper;
+import com.quiz.apps.account.model.User;
+import com.quiz.apps.account.model.UserDTO;
+import com.quiz.apps.account.service.AccountService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
-
-    private final PasswordEncoder passwordEncoder;
 
     private final AccountMapper accountMapper;
 
@@ -21,8 +21,9 @@ public class AccountServiceImpl implements AccountService {
      * @param user 
      * @return int
      */
+    @Override
     public int insertAccount(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return accountMapper.insertAccount(user);
     }
 
@@ -31,8 +32,9 @@ public class AccountServiceImpl implements AccountService {
      * @param user
      * @return int
      */
-    public int selectAccountCheck(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    @Override
+    public Optional<UserDTO> selectAccountCheck(User user) {
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return accountMapper.selectAccountCheck(user);
     }
 }
