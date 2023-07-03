@@ -1,6 +1,6 @@
-package com.quiz.web.controller;
+package com.quiz.web.account.controller;
 
-import com.quiz.apps.domain.User;
+import com.quiz.apps.model.User;
 import com.quiz.apps.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AccountController {
 
     private final AccountService accountService;
-
 
     @GetMapping(value = "/login")
     public String loginForm() {
