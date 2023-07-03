@@ -24,7 +24,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable() // CSRF 보안 설정 해제 (테스트 시 간단하게 사용하기 위함)
                 .authorizeRequests()
-                .antMatchers("/login", "/signup", "/main").permitAll() // 로그인&회원가입 페이지는 인증 없이 접근 가능하도록 설정
+                .antMatchers("/login", "/signup","/index").permitAll() // 로그인&회원가입 페이지는 인증 없이 접근 가능하도록 설정
                 .anyRequest().authenticated() // 다른 요청은 인증이 필요하도록 설정
                 .and()
                 .formLogin()

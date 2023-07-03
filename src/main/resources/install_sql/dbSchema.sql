@@ -5,7 +5,7 @@
 mariadb DB생성 후 계정 생성 및 권한 부여
 1. 터미널접속   : win + s => mysql client 실행
 2. root계정접속 : root 계정 비밀번호 입력하여 접속
-3. DB생성       : create database quiz;
+3. DB생성       : create database quiz CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 4. 계정생성     : create user 'javauser'@'%';
 5. 계정PW 변경  : SET PASSWORD FOR 'javauser'@'%'=password('1234');
 6. 권한부여     : grant all privileges on quiz.* to 'javauser'@'%';
