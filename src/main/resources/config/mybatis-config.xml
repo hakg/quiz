@@ -8,7 +8,7 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
-        <package name="com.quiz.apps.domain"/>
+        <package name="com.*.domain"/>
     </typeAliases>
 </configuration>
 
