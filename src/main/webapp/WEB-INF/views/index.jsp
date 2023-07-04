@@ -51,9 +51,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- 여기에 메뉴를 생성해줘여함 --!>
-            <div id="menu">
-                <jsp:include page="admin/menu.jsp" flush="false"/>
-            </div>
+            <jsp:include page="admin/menu.jsp" flush="false"/>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

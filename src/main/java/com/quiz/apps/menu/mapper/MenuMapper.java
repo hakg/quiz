@@ -9,5 +9,5 @@ import java.util.Map;
 @Mapper
 public interface MenuMapper {
 
-    public List<Menu> selectMenuList(Map<String, Object> map);
+    public List<Menu> selectMenuList();
 }

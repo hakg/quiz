@@ -1,19 +1,38 @@
 package com.quiz.web.menu.controller.controller;
 
+import com.quiz.apps.common.ResultJSON;
+import com.quiz.apps.menu.model.Menu;
+import com.quiz.apps.menu.service.MenuService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 public class MenuController {
 
-    @PostMapping
-    public String getUserMenu() {
+    @Autowired
+    public MenuService menuService;
 
+    @PostMapping("/menuList")
+    @ResponseBody
+    public ResultJSON getUserMenu() {
 
+        ResultJSON resultJSON = new ResultJSON();
 
-        return "";
+        List<Menu> selectMenu = menuService.selectMenuList();
+
+        resultJSON.setItems(selectMenu);
+        System.out.println(selectMenu);
+        System.out.println(resultJSON);
+
+        return resultJSON;
     }
 
 

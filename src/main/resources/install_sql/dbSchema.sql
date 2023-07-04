@@ -8,7 +8,9 @@ mariadb DB생성 후 계정 생성 및 권한 부여
 3. DB생성       : create database quiz CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 4. 계정생성     : create user 'javauser'@'%';
 5. 계정PW 변경  : SET PASSWORD FOR 'javauser'@'%'=password('1234');
-6. 권한부여     : grant all privileges on quiz.* to 'javauser'@'%';
+6. 권한부여     : GRANT ALL PRIVILEGES ON *.* TO javauser@'%' IDENTIFIED BY '1234' WITH GRANT OPTION;
+              GRANT ALL PRIVILEGES ON *.* TO javauser@localhost IDENTIFIED BY '1234' WITH GRANT OPTION;
+              GRANT ALL PRIVILEGES ON *.* TO javauser@localhost.localdomain IDENTIFIED BY '1234' WITH GRANT OPTION;
 7. 처리건 적용  : flush privileges;
 8. 계정 조회    : select user, host, password from mysql.user;
 

@@ -4,5 +4,7 @@
 
 <mapper namespace="com.quiz.apps.menu.mapper.MenuMapper">
 
-
+    <select id="selectMenuList" resultType="Menu">
+        select * from menu
+    </select>
 </mapper>
