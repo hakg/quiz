@@ -36,3 +36,19 @@ CREATE TABLE `menu` (
   `parentAuthID` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`menu_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+INSERT INTO quiz.menu
+(menu_code, menu_name, menu_gubun, parentMenuID)
+VALUES('010', '퀴즈', 'A', '010');
+INSERT INTO quiz.menu
+(menu_code, menu_name, menu_gubun, parentMenuID)
+VALUES('011', '자바', 'A', '010');
+INSERT INTO quiz.menu
+(menu_code, menu_name, menu_gubun, parentMenuID)
+VALUES('012', '스프링', 'A', '010');
+INSERT INTO quiz.menu
+(menu_code, menu_name, menu_gubun, parentMenuID)
+VALUES('020', '관리자', 'U', '020');
+INSERT INTO quiz.menu
+(menu_code, menu_name, menu_gubun, parentMenuID)
+VALUES('021', '회원정보', 'U', '020');
