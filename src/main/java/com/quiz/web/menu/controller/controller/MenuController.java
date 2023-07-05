@@ -29,8 +29,6 @@ public class MenuController {
         List<Menu> selectMenu = menuService.selectMenuList();
 
         resultJSON.setItems(selectMenu);
-        System.out.println(selectMenu);
-        System.out.println(resultJSON);
 
         return resultJSON;
     }
