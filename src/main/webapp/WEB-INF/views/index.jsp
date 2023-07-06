@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +18,8 @@
 
     <!-- Custom styles for this template-->
     <link href="/resources/static/bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+    <jsp:include page="common/include_common.jsp" flush="false"/>
+
 
 </head>
 
@@ -24,8 +27,7 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-
-        <!-- Sidebar -->
+<!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
@@ -51,7 +53,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <!-- 여기에 메뉴를 생성해줘여함 --!>
-            <jsp:include page="admin/menu.jsp" flush="false"/>
+            <jsp:include page="menu/menu.jsp" flush="false"/>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -61,16 +63,9 @@
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message -->
-            <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="bootstrap/imges/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-            </div>
-
         </ul>
-        <!-- End of Sidebar -->
 
+        <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -193,7 +188,7 @@
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="bootstrap/imges/undraw_profile_1.svg"
+                                        <img class="rounded-circle" src="/resources/static/bootstrap/imges/undraw_profile_1.svg"
                                             alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
@@ -205,7 +200,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="bootstrap/imges/undraw_profile_2.svg"
+                                        <img class="rounded-circle" src="/resources/static/bootstrap/imges/undraw_profile_2.svg"
                                             alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
@@ -217,7 +212,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="bootstrap/imges/undraw_profile_3.svg"
+                                        <img class="rounded-circle" src="/resources/static/bootstrap/imges/undraw_profile_3.svg"
                                             alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
@@ -656,23 +651,13 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/resources/static/bootstrap/jquery/jquery.min.js"></script>
-    <script src="/resources/static/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="/resources/static/bootstrap/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/resources/static/bootstrap/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="/resources/static/bootstrap/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="/resources/static/bootstrap/js/demo/chart-area-demo.js"></script>
-    <script src="/resources/static/bootstrap/js/demo/chart-pie-demo.js"></script>
 
 </body>
+<script type="text/javascript">
 
+	function goSubMenu(url){
+        $('#content').load(url);
+	}
+
+</script>
 </html>

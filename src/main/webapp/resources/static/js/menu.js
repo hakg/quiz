@@ -8,23 +8,6 @@ function showMenu() {
     			console.log("error");
     		},
     		success: function(returnJSON) {
-    		/*
-    		    <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Components</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Custom Components:</h6>
-                            <a class="collapse-item" href="buttons.html">Buttons</a>
-                            <a class="collapse-item" href="cards.html">Cards</a>
-                        </div>
-                    </div>
-                </li>
-             */
-//<a id="mainmenu" class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"'
                 var records = '';
                 $.each(returnJSON.items, function(i, menu) {
                     if(menu.menuCode == menu.parentMenuID) {
@@ -41,7 +24,7 @@ function showMenu() {
 
                             if (previousValue === menu.parentMenuID) {
                                 records += '<h6 class="collapse-header">' + menu.menuName + '</h6>'
-                                        +'<a class="collapse-item" href="buttons.html">'+ 'Problem Solving' +'</a>'
+                                        +'<a name="submenu" class="collapse-item" href="#" url="/java/question">'+ '문제 풀기' +'</a>'
                             }
 
                             + '</div>'
@@ -69,6 +52,13 @@ function showMenu() {
                         divElement.removeClass('collspace').addClass('collspace show');
                     }
                 });
+
+                $('a[name="submenu"]').bind('click', function() {
+                				var url = $(this).attr('url');
+                				console.log(url);
+                			 	goSubMenu(url);
+
+                			});
     		}
 
     });
