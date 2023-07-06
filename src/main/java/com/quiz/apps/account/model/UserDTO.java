@@ -1,30 +1,19 @@
 package com.quiz.apps.account.model;
 
-import lombok.*;
-import lombok.extern.slf4j.Slf4j;
+import com.quiz.core.model.DefaultModel;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UserDTO {
+import java.util.Date;
 
-    // 사용자 아이디
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class UserDTO extends DefaultModel {
     private String userId;
-
-    // 사용자 패스워드
-    private String userPassword;
-
-    // 사용자 이름
     private String userName;
-
-    // 사용자 상태
+    private String password;
+    private String userRole;
     private String userStatus;
-
-    @Builder
-    UserDTO(String userId, String userPassword, String userName, String userStatus) {
-        this.userId = userId;
-        this.userPassword = userPassword;
-        this.userName = userName;
-        this.userStatus = userStatus;
-    }
-
+    private Date lastLoginDate;
+    private Date passwordUpdateDate;
 }

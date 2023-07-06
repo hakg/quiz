@@ -1,4 +1,4 @@
-package com.quiz.web.menu.controller.controller;
+package com.quiz.web.menu.controller;
 
 import com.quiz.apps.common.ResultJSON;
 import com.quiz.apps.menu.model.Menu;

@@ -32,12 +32,12 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">신규 회원가입</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" id="user">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="userName" placeholder="이름 입력">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="email" placeholder="이메일 입력">
+                                    <input type="text" class="form-control form-control-user" id="userId" placeholder="사용자아이디 입력(이메일 또는 핸드폰)">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

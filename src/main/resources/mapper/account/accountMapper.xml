@@ -4,32 +4,37 @@
 
 <mapper namespace="com.quiz.apps.account.mapper.AccountMapper">
 
-    <insert id="insertAccount" parameterType="User">
+    <insert id="insertAccount" parameterType="UserDTO">
         INSERT
-        INTO USER
-        ( EMAIL
-        , USER_NAME
-        , PASSWORD
-        , USER_GUBUN
-        , INSERT_DATE
-        , MODIFY_DATE
-        , LAST_LOGIN_DATE
-        , PASSWORD_UPDATE_DATE )
+          INTO USER
+             ( USER_ID
+             , USER_NAME
+             , PASSWORD
+             , USER_ROLE
+             , USER_STATUS
+             , LAST_LOGIN_DATE
+             , PASSWORD_UPDATE_DATE
+             , INSERT_ID
+             , INSERT_DATE
+             , MODIFY_ID
+             , MODIFY_DATE )
         VALUES
-        ( #{email, jdbcType=VARCHAR}
-        , #{userName, jdbcType=VARCHAR}
-        , #{password, jdbcType=VARCHAR}
-        , DEFAULT
-        , NOW()
-        , NOW()
-        , NULL
-        , NOW() )
+             ( #{userId, jdbcType=VARCHAR}
+             , #{userName, jdbcType=VARCHAR}
+             , #{password, jdbcType=VARCHAR}
+             , DEFAULT /* USER_ROLE 'USER' */
+             , DEFAULT /* USER_STATUS '1' */
+             , DEFAULT /* LAST_LOGIN_DATE 'NULL' */
+             , NOW()
+             , 'SYSTEM'
+             , NOW()
+             , 'SYSTEM'
+             , NOW() )
     </insert>
 
     <select id="selectAccountCheck" resultType="UserDTO">
-        SELECT COUNT(1)
-        FROM USER UE
-        WHERE UE.EMAIL = #{email, jdbcType=VARCHAR}
-        AND UE.PASSWORD = #{password, jdbcType=VARCHAR}
+        SELECT UE.*
+          FROM USER UE
+         WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
     </select>
 </mapper>

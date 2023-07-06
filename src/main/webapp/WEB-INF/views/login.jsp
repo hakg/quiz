@@ -36,15 +36,15 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="/loginProcess" >
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="email" aria-describedby="emailHelp"
-                                                placeholder="이메일 입력">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="userId" name="userId" aria-describedby="userIdHelp"
+                                                placeholder="사용자아이디 입력(이메일 또는 핸드폰)">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" placeholder="패스워드 입력">
+                                                id="password" name="password" placeholder="패스워드 입력">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -52,7 +52,7 @@
                                                 <label class="custom-control-label" for="customCheck">로그인정보 저장</label>
                                             </div>
                                         </div>
-                                        <div id="loginBtn" class="btn btn-primary btn-user btn-block">로그인</div>
+                                        <button id="loginBtn" type="submit" class="btn btn-primary btn-user btn-block">로그인</div>
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -76,7 +76,6 @@
 
     <!-- Custom scripts for all pages -->
     <script src="/resources/static/bootstrap/js/sb-admin-2.min.js"></script>
-    <script src="/resources/static/js/account.js"></script>
 
 </body>
 </html>
