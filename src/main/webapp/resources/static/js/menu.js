@@ -24,7 +24,7 @@ function showMenu() {
 
                             if (previousValue === menu.parentMenuID) {
                                 records += '<h6 class="collapse-header">' + menu.menuName + '</h6>'
-                                        +'<a name="submenu" class="collapse-item" href="#" url="/java/question">'+ '문제 풀기' +'</a>'
+                                        +'<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + '>'+ '문제 풀기' +'</a>'
                             }
 
                             + '</div>'
@@ -44,21 +44,23 @@ function showMenu() {
                     if($(this).attr('aria-expanded')=== 'true') {
                         $(this).attr('aria-expanded', 'false');
                         var divElement = $(this).next('div');
+
                         divElement.removeClass('collspace show').addClass('collspace');
+                        $(this).removeClass('nav-link').addClass('nav-link collapsed');
 
                     } else {
                         var divElement = $(this).next('div');
                         $(this).attr('aria-expanded', 'true');
                         divElement.removeClass('collspace').addClass('collspace show');
+                        $(this).removeClass('nav-link collapsed').addClass('nav-link');
                     }
                 });
 
                 $('a[name="submenu"]').bind('click', function() {
-                				var url = $(this).attr('url');
-                				console.log(url);
-                			 	goSubMenu(url);
+                    var url = $(this).attr('url');
+                    goSubMenu(url);
 
-                			});
+                });
     		}
 
     });

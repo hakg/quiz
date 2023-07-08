@@ -11,4 +11,5 @@ public class Menu {
     public String menuName;
     public String menuGubun;
     public String parentMenuID;
+    public String menuUrl;
 }

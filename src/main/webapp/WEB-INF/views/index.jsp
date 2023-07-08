@@ -277,7 +277,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div id="mainContent" class="container-fluid">
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -656,7 +656,7 @@
 <script type="text/javascript">
 
 	function goSubMenu(url){
-        $('#content').load(url);
+        $('#mainContent').load(url);
 	}
 
 </script>
