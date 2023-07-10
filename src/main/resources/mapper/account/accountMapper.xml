@@ -37,4 +37,10 @@
           FROM USER UE
          WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
     </select>
+
+    <select id="selectAccountDupCheck" resultType="int">
+        SELECT COUNT(1)
+          FROM USER UE
+         WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
+    </select>
 </mapper>

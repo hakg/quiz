@@ -15,6 +15,7 @@ import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,6 +58,20 @@ public class AccountController {
     @ResponseBody
     public ResultJSON signupSubmit(@RequestBody UserDTO userDTO) {
         ResultJSON resultJSON = new ResultJSON();
+
+        if (!StringUtils.hasText(userDTO.getUserId()) || !StringUtils.hasText(userDTO.getUserId())
+                || !StringUtils.hasText(userDTO.getUserId())) {
+            resultJSON.setCode(400); // 나쁜 요청처리
+            resultJSON.setMessage("회원가입 실패하셨습니다. 정보를 확인하여 재시도 해주세요");
+            return resultJSON;
+        }
+
+        if (accountService.selectAccountDupCheck(userDTO.getUserId()) > 0) {
+            // 회원가입 실패 처리
+            resultJSON.setCode(401); // 유효한 인증 자격 증명이 없음
+            resultJSON.setMessage("이미 존재하는 계정입니다.");
+            return resultJSON;
+        }
 
         if (accountService.insertAccount(userDTO) > 0) {
             // 회원가입 성공 시 처리
