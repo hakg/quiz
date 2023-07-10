@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,6 +17,8 @@
     <!-- Custom styles for this template-->
     <link href="/resources/static/bootstrap/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 
+    <!-- 자바스크립트 기본 코어 모듈 -->
+    <jsp:include page="common/include_common.jsp"/>
 </head>
 
 <body class="bg-gradient-primary">
@@ -40,11 +40,11 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
                                                 id="userId" name="userId" aria-describedby="userIdHelp"
-                                                placeholder="사용자아이디 입력(이메일 또는 핸드폰)">
+                                                required="true" placeholder="사용자아이디 입력(이메일 또는 핸드폰)">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="패스워드 입력">
+                                                id="password" name="password" required="true" placeholder="패스워드 입력">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -69,13 +69,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="/resources/static/bootstrap/jquery/jquery.min.js"></script>
-    <script src="/resources/static/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for all pages -->
-    <script src="/resources/static/bootstrap/js/sb-admin-2.min.js"></script>
-
 </body>
 </html>

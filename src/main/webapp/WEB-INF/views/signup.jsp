@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,6 +16,9 @@
 
     <!-- Custom styles for this template-->
     <link href="/resources/static/bootstrap/css/sb-admin-2.min.css" rel="stylesheet"  type="text/css">
+
+    <!-- 자바스크립트 기본 코어 모듈 -->
+    <jsp:include page="common/include_common.jsp"/>
 </head>
 
 <body class="bg-gradient-primary">
@@ -34,17 +35,17 @@
                             </div>
                             <form class="user" id="user">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="userName" placeholder="이름 입력">
+                                    <input type="text" class="form-control form-control-user" id="userName" required="true" placeholder="이름 입력(2자~4자)">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="userId" placeholder="사용자아이디 입력(이메일 또는 핸드폰)">
+                                    <input type="text" class="form-control form-control-user" id="userId" required="true" placeholder="사용자아이디 입력(이메일)">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="password" placeholder="패스워드 입력">
+                                        <input type="password" class="form-control form-control-user" id="password" required="true" placeholder="패스워드 입력(최소8자 숫자,문자,특문 포함)">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user" id="repeatPassword" placeholder="패스워드 확인">
+                                        <input type="password" class="form-control form-control-user" id="repeatPassword" required="true"  placeholder="패스워드 확인(최소8자 숫자,문자,특문 포함)">
                                     </div>
                                 </div>
                                 <div id="signUpBtn" class="btn btn-primary btn-user btn-block">회원가입 완료</div>
@@ -64,15 +65,7 @@
 
     </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="/resources/static/bootstrap/jquery/jquery.min.js"></script>
-    <script src="/resources/static/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="/resources/static/bootstrap/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages -->
-    <script src="/resources/static/bootstrap/js/sb-admin-2.min.js"></script>
+    <!-- event JavaScript -->
     <script src="/resources/static/js/account.js"></script>
 
 </body>

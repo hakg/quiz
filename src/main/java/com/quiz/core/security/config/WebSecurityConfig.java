@@ -29,7 +29,7 @@ public class WebSecurityConfig {
     }
 
     /**
-     * 스프링시큐리티 정적 자원 접근 해제
+     * 스프링시큐리티 인증/인가 설정
      * @param http
      * @return SecurityFilterChain
      * @throws Exception

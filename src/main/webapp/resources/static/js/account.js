@@ -35,7 +35,34 @@ function signupUser() {
   const formData = {
       userName: $('#userName').val(),
       userId: $('#userId').val(),
-      password: $('#password').val()
+      password: $('#password').val(),
+      repeatPassword: $('#repeatPassword').val()
+  }
+
+  // 정규표현식 패턴
+  const nameRegex = /^[가-힣]{2,4}$/; // 이름은 한글만 허용
+  const emailRegex = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/; // 이메일 형식 체크
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/; // 패스워드는 최소 8자 이상, 숫자,문자,특문 포함
+
+  if (!nameRegex.test(formData.userName)) {
+    alert('올바른 이름을 입력해주세요.');
+    userName.focus();
+    return;
+  }
+  if (!emailRegex.test(formData.userId)) {
+    alert('올바른 이메일 주소를 입력해주세요.');
+    userId.focus();
+    return;
+  }
+  if (!passwordRegex.test(formData.password)) {
+    alert('올바른 패스워드를 입력해주세요.\n패스워드는 최소 8자 이상, 숫자, 문자, 특문 포함해야 합니다.');
+    password.focus();
+    return;
+  }
+  if (formData.password != formData.repeatPassword) {
+    alert('패스워드를 확인해주세요.');
+    repeatPassword.focus();
+    return;
   }
 
   // 회원가입 요청을 보냅니다.

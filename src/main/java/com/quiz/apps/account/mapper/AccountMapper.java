@@ -10,4 +10,6 @@ public interface AccountMapper {
     int insertAccount(UserDTO userDTO);
 
     UserDTO selectAccountCheck(String userId);
+
+    int selectAccountDupCheck(String userId);
 }

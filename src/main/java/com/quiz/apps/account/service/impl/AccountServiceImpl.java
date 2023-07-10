@@ -29,6 +29,15 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
     }
 
     /**
+     * 회원가입 - 계정 체크
+     * @return int
+     */
+    @Override
+    public int selectAccountDupCheck(String userId) {
+        return accountMapper.selectAccountDupCheck(userId);
+    }
+
+    /**
      * 로그인 - 스프링 시큐리티 계정 체크 ("/loginProcess" 호출 여기로 탐)
      * @return int
      */

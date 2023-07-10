@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Title</title>
-
 </head>
 <body>
-
-
     <!-- Bootstrap core JavaScript-->
     <script src="/resources/static/bootstrap/jquery/jquery.min.js"></script>
     <script src="/resources/static/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -23,10 +20,5 @@
 
     <!-- Page level custom scripts -->
     <script src="/resources/static/bootstrap/js/chart/Chart.min.js"></script>
-
-
-
-
-
 </body>
 </html>
