@@ -12,6 +12,7 @@
           <!-- XML에서 객체의 풀경로를 미리 지정하여 Type에서 객체만 선언하여 사용 -->
         <package name="com.quiz.apps.account.model"/>
         <package name="com.quiz.apps.menu.model"/>
+        <package name="com.quiz.apps.question.model"/>
     </typeAliases>
 </configuration>
 

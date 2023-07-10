@@ -6,3 +6,4 @@
 </div>
 
 <script src="/resources/static/js/menu.js"></script>
+<script src="/resources/static/js/question.js"></script>

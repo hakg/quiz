@@ -2,25 +2,19 @@ package com.quiz.web.account.controller;
 
 import com.quiz.apps.account.model.UserDTO;
 import com.quiz.apps.account.service.AccountService;
-import com.quiz.apps.common.ResultJSON;
+import com.quiz.apps.common.CommonResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -55,19 +49,19 @@ public class AccountController {
 
     @PostMapping("/signup")
     @ResponseBody
-    public ResultJSON signupSubmit(@RequestBody UserDTO userDTO) {
-        ResultJSON resultJSON = new ResultJSON();
+    public CommonResponse signupSubmit(@RequestBody UserDTO userDTO) {
+        CommonResponse commonResponse = new CommonResponse();
 
         if (accountService.insertAccount(userDTO) > 0) {
             // 회원가입 성공 시 처리
-            resultJSON.setCode(200); // 요청 정상 응답
-            resultJSON.setMessage("회원가입 완료되었습니다.");
-            return resultJSON;
+            commonResponse.setCode(200); // 요청 정상 응답
+            commonResponse.setMessage("회원가입 완료되었습니다.");
+            return commonResponse;
         } else {
             // 회원가입 실패 처리
-            resultJSON.setCode(400); // 나쁜 요청처리
-            resultJSON.setMessage("회원가입 실패하셨습니다. 재시도 해주세요");
-            return resultJSON;
+            commonResponse.setCode(400); // 나쁜 요청처리
+            commonResponse.setMessage("회원가입 실패하셨습니다. 재시도 해주세요");
+            return commonResponse;
         }
     }
 

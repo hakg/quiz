@@ -24,7 +24,7 @@ function showMenu() {
 
                             if (previousValue === menu.parentMenuID) {
                                 records += '<h6 class="collapse-header">' + menu.menuName + '</h6>'
-                                        +'<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + '>'+ '문제 풀기' +'</a>'
+                                        +'<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + ' data-name=' + menu.menuName + '>'+ '문제 풀기' +'</a>'
                             }
 
                             + '</div>'
@@ -58,7 +58,11 @@ function showMenu() {
 
                 $('a[name="submenu"]').bind('click', function() {
                     var url = $(this).attr('url');
+                    var name = $(this).attr('data-name');
+
+
                     goSubMenu(url);
+                    showQuestion(name);
 
                 });
     		}

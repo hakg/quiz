@@ -55,3 +55,15 @@ VALUES('020', '관리자', 'U', '020');
 INSERT INTO quiz.menu
 (menu_code, menu_name, menu_gubun, parentMenuID)
 VALUES('021', '회원정보', 'U', '020');
+
+
+CREATE TABLE QUIZ (
+  QUIZ_ID int(11) NOT NULL AUTO_INCREMENT,
+  CATEGORY varchar(50) NOT NULL,
+  QUIZ_INFO varchar(100) NOT NULL,
+  INSERT_ID varchar(100) NOT NULL,
+  INSERT_DATE date NOT NULL,
+  MODIFY_ID varchar(100) DEFAULT NULL,
+  MODIFY_DATE date NULL,
+  PRIMARY KEY (`quiz_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
