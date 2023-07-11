@@ -4,15 +4,16 @@ import com.quiz.apps.account.model.UserDTO;
 import com.quiz.apps.account.service.AccountService;
 import com.quiz.apps.common.CommonResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.savedrequest.RequestCache;
-import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,22 +25,21 @@ public class AccountController {
     private final AccountService accountService;
 
     @GetMapping(value = "/login")
-    public String loginForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestCache requestCache = new HttpSessionRequestCache();
-        SavedRequest savedRequest = requestCache.getRequest(request, response);
-
-        try {
-            //여러가지 이유로 이전페이지 정보가 없는 경우가 있음.
-            request.getSession().setAttribute("prevPage", savedRequest.getRedirectUrl());
-        } catch(NullPointerException e) {
-            request.getSession().setAttribute("prevPage", "/");
+    public String loginForm(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            // 이미 로그인된 사용자인 경우 /index로 리다이렉트
+            return "redirect:/index";
         }
         return "login";
     }
 
     @GetMapping(value = "/signup")
-    public String signup() {
-        return "signup"; // 회원가입 페이지로 이동
+    public String signup(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            // 이미 로그인된 사용자인 경우 /index로 리다이렉트
+            return "redirect:/index";
+        }
+        return "signup";
     }
 
     @GetMapping("/index")

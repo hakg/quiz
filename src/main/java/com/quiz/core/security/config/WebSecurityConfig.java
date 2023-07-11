@@ -37,25 +37,27 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
-//        http.formLogin().disable();
+
         http.authorizeRequests()
                 .antMatchers("/login", "/signup").permitAll() // 해당 경로는 접근 제한 없음
                 .anyRequest().authenticated(); // 어떠한 URI로 접근하던지 인증이 필요
+
         http.formLogin()
                 .loginPage("/login") // 커스텀 로그인 페이지 경로
                 .loginProcessingUrl("/loginProcess") // 로그인버튼 경로
                 .usernameParameter("userId") // 키로 사용될 값 (index.jsp - name 값)
                 .defaultSuccessUrl("/index") // 로그인 성공시 경로
-                .failureHandler(customAuthFailureHandler) // 로그인 인증 실패시 처리할 필터
+                .failureHandler(customAuthFailureHandler) // 로그인 인증 실패시 처리 필터
                 .permitAll()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/") // 로그아웃시 경로
                 .invalidateHttpSession(true); // 세션 초기화
 
-//        http.sessionManagement()
-//                .maximumSessions(1) //세션 최대 허용 수
-//                .maxSessionsPreventsLogin(false);
+        http.sessionManagement() // 동시 접속 해결을 위한 세션 허용 관리
+                .maximumSessions(1) // 세션 최대 허용 수
+                .maxSessionsPreventsLogin(false) // 세션 수 초과 사용자는 로그인 불가
+                .expiredUrl("/login");
 
         return http.build();
     }
@@ -68,5 +70,4 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }
