@@ -6,6 +6,7 @@ import com.quiz.apps.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -25,11 +26,12 @@ public class QuestionController {
 
     @PostMapping("/question/java")
     @ResponseBody
-    public CommonResponse questionJava() {
+    public CommonResponse questionJava(@ModelAttribute Question question) {
+        System.out.println(question.getNo());
         CommonResponse commonResponse = new CommonResponse();
 
-        List<Question> selectJavaQuestionList =  questionService.selectJavaQuestionList();
-        commonResponse.setItems(selectJavaQuestionList);
+        Question selectJavaQuestion =  questionService.selectJavaQuestion(question);
+        commonResponse.setData(selectJavaQuestion);
 
         return commonResponse;
 

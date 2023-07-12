@@ -7,9 +7,10 @@ import java.util.Date;
 @Data
 public class Menu {
 
-    public String menuCode;
-    public String menuName;
-    public String menuGubun;
-    public String parentMenuID;
-    public String menuUrl;
+    private String menuCode;
+    private String menuName;
+    private String menuGubun;
+    private String parentMenuID;
+    private String menuUrl;
+    private String submenuName;
 }

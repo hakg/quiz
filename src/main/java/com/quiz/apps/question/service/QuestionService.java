@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface QuestionService {
 
-    public List<Question> selectJavaQuestionList();
+    public Question selectJavaQuestion(Question question);
 }

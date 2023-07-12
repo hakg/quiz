@@ -15,7 +15,7 @@ public class QuestionServiceImpl implements QuestionService {
     QuestionMapper questionMapper;
 
     @Override
-    public List<Question> selectJavaQuestionList() {
-        return questionMapper.selectJavaQuestionList();
+    public Question selectJavaQuestion(Question question) {
+        return questionMapper.selectJavaQuestion(question);
     }
 }

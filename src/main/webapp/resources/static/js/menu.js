@@ -9,7 +9,12 @@ function showMenu() {
     		},
     		success: function(returnJSON) {
                 var records = '';
+                var previousParentValue = '';
+                var splitArr;
+
+
                 $.each(returnJSON.items, function(i, menu) {
+
                     if(menu.menuCode == menu.parentMenuID) {
                         records += '<li class="nav-item">'
                                 + ' <a name="mainmenu" class="nav-link collapsed" href="#" data-toggle="collapse"'
@@ -22,9 +27,21 @@ function showMenu() {
 
                     } else {
 
-                            if (previousValue === menu.parentMenuID) {
+                            if (previousParentValue === menu.parentMenuID) {
+                                var text = "회원정보;바보";
+                                if(text.indexOf(";") > -1) {
+                                    splitArr = text.split(";");
+
+                                    for(var i =0; i < splitArr.length; i++) {
+                                        var test = splitArr[i];
+                                        console.log(test);
+                                    }
+                                        console.log(test);
+
+                                }
+
                                 records += '<h6 class="collapse-header">' + menu.menuName + '</h6>'
-                                        +'<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + ' data-name=' + menu.menuName + '>'+ '문제 풀기' +'</a>'
+                                        +'<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + ' data-name=' + menu.menuName + '>'+ menu.submenuName +'</a>';
                             }
 
                             + '</div>'
@@ -32,7 +49,7 @@ function showMenu() {
 
                     }
 
-                    previousValue = menu.parentMenuID;
+                    previousParentValue = menu.parentMenuID;
 
                 });
 
@@ -62,7 +79,7 @@ function showMenu() {
 
 
                     goSubMenu(url);
-                    showQuestion(name);
+                    showQuestion(name,1);
 
                 });
     		}

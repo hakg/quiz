@@ -7,11 +7,12 @@ import java.util.Date;
 @Data
 public class Question {
 
-    public int quizID;
-    public String category;
-    public String quizInfo;
-    public String insertId;
-    public Date insertDate;
-    public String modifyId;
-    public Date modifyDate;
+    private int quizID;
+    private String category;
+    private String quizInfo;
+    private String insertId;
+    private Date insertDate;
+    private String modifyId;
+    private Date modifyDate;
+    private int no;
 }

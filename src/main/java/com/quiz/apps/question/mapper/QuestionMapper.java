@@ -8,5 +8,6 @@ import java.util.List;
 @Mapper
 public interface QuestionMapper {
 
-    public List<Question> selectJavaQuestionList();
+    public Question selectJavaQuestion(Question question);
+
 }

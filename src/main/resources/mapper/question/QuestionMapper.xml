@@ -4,7 +4,7 @@
 
 <mapper namespace="com.quiz.apps.question.mapper.QuestionMapper">
 
-    <select id="selectJavaQuestionList" resultType="Question">
-        select * from quiz where category ='자바';
+    <select id="selectJavaQuestion" resultType="Question" parameterType="Question">
+        select * from quiz where category ='java' and no =#{no};
     </select>
 </mapper>
