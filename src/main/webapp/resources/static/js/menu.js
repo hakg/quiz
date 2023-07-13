@@ -28,20 +28,22 @@ function showMenu() {
                     } else {
 
                             if (previousParentValue === menu.parentMenuID) {
-                                var text = "회원정보;바보";
-                                if(text.indexOf(";") > -1) {
+
+                                records += '<h6 class="collapse-header">' + menu.menuName + '</h6>'
+
+                                if((menu.submenuName).indexOf(";") > -1) {
                                     splitArr = text.split(";");
 
                                     for(var i =0; i < splitArr.length; i++) {
-                                        var test = splitArr[i];
-                                        console.log(test);
+                                        var submenu = splitArr[i];
+                                        records += '<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + ' data-name=' + menu.menuName + '>'+ submenu +'</a>';
                                     }
-                                        console.log(test);
 
+                                } else {
+                                    records += '<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + ' data-name=' + menu.menuName + '>'+ menu.submenuName +'</a>';
                                 }
 
-                                records += '<h6 class="collapse-header">' + menu.menuName + '</h6>'
-                                        +'<a name="submenu" class="collapse-item" href="#" url=' + menu.menuUrl + ' data-name=' + menu.menuName + '>'+ menu.submenuName +'</a>';
+
                             }
 
                             + '</div>'
