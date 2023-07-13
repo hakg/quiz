@@ -7,4 +7,10 @@
     <select id="selectJavaQuestion" resultType="Question" parameterType="Question">
         select * from quiz where category ='java' and no =#{no};
     </select>
+
+    <select id="selectAnswer" resultType="Answer" parameterType="Answer">
+
+        select * from answer where quiz_id = #{quizID}
+
+    </select>
 </mapper>

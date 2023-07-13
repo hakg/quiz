@@ -32,7 +32,7 @@ function showMenu() {
                                 records += '<h6 class="collapse-header">' + menu.menuName + '</h6>'
 
                                 if((menu.submenuName).indexOf(";") > -1) {
-                                    splitArr = text.split(";");
+                                    splitArr = (menu.submenuName).split(";");
 
                                     for(var i =0; i < splitArr.length; i++) {
                                         var submenu = splitArr[i];

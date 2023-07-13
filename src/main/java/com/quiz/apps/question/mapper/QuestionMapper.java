@@ -1,5 +1,6 @@
 package com.quiz.apps.question.mapper;
 
+import com.quiz.apps.question.model.Answer;
 import com.quiz.apps.question.model.Question;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -9,5 +10,7 @@ import java.util.List;
 public interface QuestionMapper {
 
     public Question selectJavaQuestion(Question question);
+
+    public Answer selectAnswer(Answer answer);
 
 }

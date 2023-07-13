@@ -17,7 +17,7 @@
 </head>
 
 <div class="card mb-4 py-3 border-left-primary" style="margin-top: 100px;">
-    <div id="questionTitle" class="card-body" style="text-align: center;">
+    <div id="questionTitle" class="card-body" style="text-align: center;" data-id="">
 
     </div>
 </div>
@@ -25,7 +25,7 @@
 <textarea type="text" class="form-control form-control-user" id="exampleInputAnswer"  placeholder="정답을 적어주세요." style="margin-top: 30px;resize: none;box-sizing: border-box"></textarea>
 
 <div style=" text-align: center; margin-top: 30px;">
-	<button class="custom-button" style="display: inline-block; ">정답 제출</button>
+	<button id="answer" class="custom-button" style="display: inline-block; ">정답 제출</button>
 </div>
 
 <div class="progress mb-4" style="margin-top: 150px;">

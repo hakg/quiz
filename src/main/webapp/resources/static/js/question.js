@@ -1,5 +1,8 @@
 function showQuestion(name,no) {
 
+    console.log(name);
+    console.log(no);
+
     if(name === '자바') {
         name = 'java';
     }
@@ -22,6 +25,8 @@ function showQuestion(name,no) {
             var object = returnJSON.data;
 
             $('#questionTitle').html(object.quizInfo);
+            $('#questionTitle').attr('data-id', object.quizID);
+
 
         }
 
@@ -29,6 +34,40 @@ function showQuestion(name,no) {
 
 }
 
+function submitAnswer() {
+
+    var exampleInputAnswer = $('#exampleInputAnswer').val();
+    var quizID = $('#questionTitle').attr('data-id');
+
+
+    var param = {
+        "inputAnswer" : exampleInputAnswer,
+        "quizID" : quizID
+    }
+    console.log(param);
+
+    $.ajax({
+            type : 'POST',
+            dataType : 'JSON',
+            data : param,
+            url : '/answer',
+            error:function() {
+                console.log("error");
+            },
+            success: function(returnJSON) {
+
+                console.log(returnJSON);
+
+            }
+
+        });
+
+}
+
+$('#answer').on('click', function() {
+    submitAnswer();
+
+});
 
 /* ======================================================================================
  *  공통부분
