@@ -40,21 +40,22 @@ CREATE TABLE `menu` (
   PRIMARY KEY (`menu_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
-INSERT INTO quiz.menu
-(menu_code, menu_name, menu_gubun, parentMenuID)
-VALUES('010', '퀴즈', 'A', '010');
-INSERT INTO quiz.menu
-(menu_code, menu_name, menu_gubun, parentMenuID)
-VALUES('011', '자바', 'A', '010');
-INSERT INTO quiz.menu
-(menu_code, menu_name, menu_gubun, parentMenuID)
-VALUES('012', '스프링', 'A', '010');
-INSERT INTO quiz.menu
-(menu_code, menu_name, menu_gubun, parentMenuID)
-VALUES('020', '관리자', 'U', '020');
-INSERT INTO quiz.menu
-(menu_code, menu_name, menu_gubun, parentMenuID)
-VALUES('021', '회원정보', 'U', '020');
+INSERT INTO menu
+(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+VALUES('0100', '퀴즈', 'A', '0100', NULL, NULL);
+INSERT INTO menu
+(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+VALUES('0110', '자바', 'A', '0100', '/java/question', '문제풀기');
+INSERT INTO menu
+(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+VALUES('0120', '스프링', 'A', '0100', NULL, '문제풀기');
+INSERT INTO menu
+(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+VALUES('0200', '관리자', 'U', '0200', NULL, NULL);
+INSERT INTO menu
+(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+VALUES('0210', '회원정보', 'U', '0200', NULL, '계정정보;문제추');
+
 
 
 CREATE TABLE QUIZ (
