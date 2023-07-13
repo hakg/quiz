@@ -52,9 +52,6 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">비밀번호 찾기</a>
-                            </div>
-                            <div class="text-center">
                                 <a class="small" href="/login">로그인</a>
                             </div>
                         </div>

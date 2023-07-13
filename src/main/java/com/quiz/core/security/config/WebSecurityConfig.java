@@ -1,12 +1,16 @@
 package com.quiz.core.security.config;
 
+import com.quiz.apps.account.service.impl.AccountServiceImpl;
 import com.quiz.core.security.handler.CustomAuthFailureHandler;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -17,6 +21,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
 
     private final CustomAuthFailureHandler customAuthFailureHandler;
+
+    private final UserDetailsService accountServiceImpl;
 
     /**
      * 스프링시큐리티 정적 자원 접근 해제
@@ -51,7 +57,8 @@ public class WebSecurityConfig {
                 .permitAll()
                 .and()
                 .logout()
-                .logoutSuccessUrl("/") // 로그아웃시 경로
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login") // 로그아웃시 경로
                 .invalidateHttpSession(true); // 세션 초기화
 
         http.sessionManagement() // 동시 접속 해결을 위한 세션 허용 관리
@@ -59,15 +66,12 @@ public class WebSecurityConfig {
                 .maxSessionsPreventsLogin(false) // 세션 수 초과 사용자는 로그인 불가
                 .expiredUrl("/login");
 
-        return http.build();
-    }
+        http.rememberMe() // 로그인 정보 저장 기능
+                .rememberMeParameter("customCheck") // 체크박스 name
+                .alwaysRemember(true)
+                .tokenValiditySeconds(86400 * 30) // 유지 기간 초단위 (1일 * 30)
+                .userDetailsService(accountServiceImpl);
 
-    /**
-     * 스프링시큐리티 패스워드 암호화 처리
-     * @return PasswordEncoder
-     * */
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return http.build();
     }
 }
