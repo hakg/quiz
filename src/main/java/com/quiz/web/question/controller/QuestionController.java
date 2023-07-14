@@ -44,12 +44,27 @@ public class QuestionController {
     public CommonResponse giveAnswer(@ModelAttribute Answer answer) {
         CommonResponse commonResponse = new CommonResponse();
 
-        String inputAnswer = answer.getInputAnswer();
+        String inputAnswer = answer.getInputAnswer().replaceAll("\\s", "");
+        System.out.println(inputAnswer);
 
         Answer selectAnswer = questionService.selectAnswer(answer);
+        String answerKeyword = selectAnswer.getAnswerKeyword();
+        int index = 0;
+        String[] splitKeywords = answerKeyword.split(";");
+
+        for (String keyword : splitKeywords) {
+            if (inputAnswer.indexOf(keyword) != -1) {
+                index++;
+
+            }
+        }
 
 
-
+        if(index == splitKeywords.length) {
+            commonResponse.setMessage("correctAnswer");
+        } else {
+            commonResponse.setMessage("incorrectAnswer");
+        }
         commonResponse.setData(selectAnswer);
 
         return commonResponse;

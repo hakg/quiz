@@ -55,8 +55,10 @@ function submitAnswer() {
                 console.log("error");
             },
             success: function(returnJSON) {
-
-                console.log(returnJSON);
+                console.log(returnJSON.message);
+                if(returnJSON.message == "correctAnswer") {
+                    console.log("정답처리");
+                }
 
             }
 
