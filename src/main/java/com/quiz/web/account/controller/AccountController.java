@@ -44,7 +44,7 @@ public class AccountController {
 
     @GetMapping("/index")
     public String index(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("userId", user.getUsername());
+        model.addAttribute("userName", user.getUsername());
         return "index";
     }
 
