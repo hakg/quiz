@@ -48,6 +48,12 @@ public class AccountController {
         return "index";
     }
 
+    @GetMapping("/account")
+    public String account(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("UserDTO", accountService.selectAccountCheck(user.getUsername()));
+        return "account";
+    }
+
     @PostMapping("/signup")
     @ResponseBody
     public CommonResponse signupSubmit(@RequestBody UserDTO userDTO) {
@@ -67,17 +73,16 @@ public class AccountController {
             return commonResponse;
         }
 
-        if (accountService.insertAccount(userDTO) > 0) {
-            // 회원가입 성공 시 처리
-            commonResponse.setCode(200); // 요청 정상 응답
-            commonResponse.setMessage("회원가입 완료되었습니다.");
-            return commonResponse;
-        } else {
+        if (accountService.insertAccount(userDTO) <= 0) {
             // 회원가입 실패 처리
             commonResponse.setCode(400); // 나쁜 요청처리
             commonResponse.setMessage("회원가입 실패하셨습니다. 재시도 해주세요");
-            return commonResponse;
+        } else {
+            // 회원가입 성공 시 처리
+            commonResponse.setCode(200); // 요청 정상 응답
+            commonResponse.setMessage("회원가입 완료되었습니다.");
         }
+        return commonResponse;
     }
 
 }

@@ -44,7 +44,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        UserDTO userDTO = accountMapper.selectAccountCheck(userId);
+        UserDTO userDTO = selectAccountCheck(userId);
 
         if (userDTO == null) {
             throw new UsernameNotFoundException("존재하지 않는 회원입니다.");
@@ -55,5 +55,14 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
                 .password(userDTO.getPassword())
                 .roles(userDTO.getUserRole())
                 .build();
+    }
+
+    /**
+     * 계정정보 조회
+     * @return UserDTO
+     */
+    @Override
+    public UserDTO selectAccountCheck(String userId) {
+        return accountMapper.selectAccountCheck(userId);
     }
 }

@@ -55,7 +55,10 @@ VALUES('0200', '관리자', 'U', '0200', NULL, NULL);
 INSERT INTO menu
 (menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
 VALUES('0210', '회원정보', 'U', '0200', NULL, '계정정보;문제추');
-
+# 회원정보 노출 정보
+update menu
+   set menu_url = '/account'
+ where menu_code = '0210';
 
 
 CREATE TABLE QUIZ (

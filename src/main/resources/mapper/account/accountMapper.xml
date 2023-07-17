@@ -43,4 +43,5 @@
           FROM USER UE
          WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
     </select>
+
 </mapper>
