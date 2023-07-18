@@ -10,4 +10,6 @@ public interface AccountService {
     int selectAccountDupCheck(String userId);
 
     UserDTO selectAccountCheck(String userId);
+
+    int updateAccount(UserDTO userDTO);
 }

@@ -44,4 +44,14 @@
          WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
     </select>
 
+    <update id="updateAccount">
+        UPDATE USER UE
+           SET UE.PASSWORD_UPDATE_DATE = NOW()
+             , UE.USER_NAME = #{userName, jdbcType=VARCHAR}
+             <if test="password != null and password != ''">
+                 , UE.PASSWORD = #{password, jdbcType=VARCHAR}
+             </if>
+         WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
+    </update>
+
 </mapper>

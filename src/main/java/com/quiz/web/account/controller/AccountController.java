@@ -24,7 +24,7 @@ public class AccountController {
 
     private final AccountService accountService;
 
-    @GetMapping(value = "/login")
+    @GetMapping("/login")
     public String loginForm(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         if (authentication != null && authentication.isAuthenticated()) {
             // 이미 로그인된 사용자인 경우 /index로 리다이렉트
@@ -33,7 +33,7 @@ public class AccountController {
         return "login";
     }
 
-    @GetMapping(value = "/signup")
+    @GetMapping("/signup")
     public String signup(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
         if (authentication != null && authentication.isAuthenticated()) {
             // 이미 로그인된 사용자인 경우 /index로 리다이렉트
@@ -46,12 +46,6 @@ public class AccountController {
     public String index(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("userName", user.getUsername());
         return "index";
-    }
-
-    @GetMapping("/account")
-    public String account(@AuthenticationPrincipal User user, Model model) {
-        model.addAttribute("UserDTO", accountService.selectAccountCheck(user.getUsername()));
-        return "account";
     }
 
     @PostMapping("/signup")
@@ -81,6 +75,27 @@ public class AccountController {
             // 회원가입 성공 시 처리
             commonResponse.setCode(200); // 요청 정상 응답
             commonResponse.setMessage("회원가입 완료되었습니다.");
+        }
+        return commonResponse;
+    }
+
+    @GetMapping("/account")
+    public String account(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("UserDTO", accountService.selectAccountCheck(user.getUsername()));
+        return "account";
+    }
+
+    @PostMapping("/account/update")
+    @ResponseBody
+    public CommonResponse accountUpdate(@RequestBody UserDTO userDTO) {
+        CommonResponse commonResponse = new CommonResponse();
+
+        if (accountService.updateAccount(userDTO) <= 0) {
+            commonResponse.setCode(400); // 나쁜 요청처리
+            commonResponse.setMessage("업데이트 처리할 데이터가 없습니다.");
+        } else {
+            commonResponse.setCode(200); // 요청 정상 응답
+            commonResponse.setMessage("회원정보 수정이 완료되었습니다.");
         }
         return commonResponse;
     }

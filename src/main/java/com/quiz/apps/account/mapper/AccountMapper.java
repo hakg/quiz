@@ -12,4 +12,6 @@ public interface AccountMapper {
     UserDTO selectAccountCheck(String userId);
 
     int selectAccountDupCheck(String userId);
+
+    int updateAccount(UserDTO userDTO);
 }

@@ -59,10 +59,22 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 
     /**
      * 계정정보 조회
-     * @return UserDTO
+     * @return String
      */
     @Override
     public UserDTO selectAccountCheck(String userId) {
         return accountMapper.selectAccountCheck(userId);
+    }
+
+    /**
+     * 계정정보 수정
+     * @return UserDTO
+     */
+    @Override
+    public int updateAccount(UserDTO userDTO) {
+        if (userDTO.getPassword() != null) {
+            userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        }
+        return accountMapper.updateAccount(userDTO);
     }
 }
