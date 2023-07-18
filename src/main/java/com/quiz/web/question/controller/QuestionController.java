@@ -32,7 +32,12 @@ public class QuestionController {
         CommonResponse commonResponse = new CommonResponse();
 
         Question selectJavaQuestion =  questionService.selectJavaQuestion(question);
+
+        question.setNo(question.getNo());
+
+        int count = questionService.selectCountJavaQuestion(question);
         commonResponse.setData(selectJavaQuestion);
+        commonResponse.setTotalCount(count);
 
         return commonResponse;
 

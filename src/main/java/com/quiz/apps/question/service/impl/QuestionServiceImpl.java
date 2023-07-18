@@ -21,6 +21,11 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public int selectCountJavaQuestion(Question question) {
+        return questionMapper.selectCountJavaQuestion(question);
+    }
+
+    @Override
     public Answer selectAnswer(Answer answer) {
         return questionMapper.selectAnswer(answer);
     }

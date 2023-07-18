@@ -21,6 +21,6 @@
     <!-- Page level custom scripts -->
     <script src="/resources/static/bootstrap/js/chart/Chart.min.js"></script>
 
-    <script src="/resources/static/js/question.js"></script>
+    <!--<script src="/resources/static/js/question.js"></script>-->
 </body>
 </html>

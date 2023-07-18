@@ -8,9 +8,15 @@
         select * from quiz where category ='java' and no =#{no};
     </select>
 
+    <select id="selectCountJavaQuestion" resultType="int" parameterType="Question">
+        select count(*) from quiz where category ='java';
+    </select>
+
     <select id="selectAnswer" resultType="Answer" parameterType="Answer">
 
-        select * from answer where quiz_id = #{quizID}
+        SELECT *
+        FROM ANSWER a INNER JOIN QUIZ q ON a.QUIZ_ID = q.QUIZ_ID
+        WHERE a.QUIZ_ID = #{quizID};
 
     </select>
 </mapper>

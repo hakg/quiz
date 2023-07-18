@@ -23,10 +23,14 @@ function showQuestion(name,no) {
         success: function(returnJSON) {
 
             var object = returnJSON.data;
+            var totalCount = returnJSON.totalCount;
 
             $('#questionTitle').html(object.quizInfo);
             $('#questionTitle').attr('data-id', object.quizID);
 
+            var width = ((object.quizID) * ((object.quizID) / totalCount)) * 100 + '%';
+
+            $('.progress-bar').css('width', width);
 
         }
 
@@ -55,9 +59,14 @@ function submitAnswer() {
                 console.log("error");
             },
             success: function(returnJSON) {
-                console.log(returnJSON.message);
+                console.log(returnJSON);
+                var object = returnJSON.data;
+
                 if(returnJSON.message == "correctAnswer") {
                     console.log("정답처리");
+                    var no = parseInt(object.no) + 1;
+                    //일단 하드코딩 어떻게 할지는 다시 생각해보자
+                    showQuestion('자바',no);
                 }
 
             }
