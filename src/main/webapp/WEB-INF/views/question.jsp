@@ -33,6 +33,16 @@
 </div>
 <script src="/resources/static/js/question.js"></script>
 
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        var name = $("#nameHidden").val();
+        showQuestion(name,1);
+    });
+
+
+</script>
 
 
 

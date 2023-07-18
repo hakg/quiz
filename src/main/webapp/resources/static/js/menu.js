@@ -81,7 +81,10 @@ function showMenu() {
 
 
                     goSubMenu(url);
-                    showQuestion(name,1);
+
+                    $("#urlHidden").val(url);
+                    $("#nameHidden").val(name);
+                    //showQuestion(name,1);
 
                 });
     		}

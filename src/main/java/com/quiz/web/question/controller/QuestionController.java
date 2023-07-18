@@ -53,7 +53,7 @@ public class QuestionController {
         String[] splitKeywords = answerKeyword.split(";");
 
         for (String keyword : splitKeywords) {
-            if (inputAnswer.indexOf(keyword) != -1) {
+            if (inputAnswer.contains(keyword)) {
                 index++;
 
             }
