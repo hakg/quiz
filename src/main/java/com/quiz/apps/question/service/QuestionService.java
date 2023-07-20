@@ -9,7 +9,7 @@ public interface QuestionService {
 
     public Question selectJavaQuestion(Question question);
 
-    public int selectCountJavaQuestion(Question question);
+    public int selectCountQuestion(Question question);
 
     public Answer selectAnswer(Answer answer);
 }

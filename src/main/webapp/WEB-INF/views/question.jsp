@@ -17,7 +17,7 @@
 </head>
 
 <div class="card mb-4 py-3 border-left-primary" style="margin-top: 100px;">
-    <div id="questionTitle" class="card-body" style="text-align: center;" data-id="">
+    <div id="questionTitle" class="card-body" style="text-align: center;" data-id="" data-category="">
 
     </div>
 </div>

@@ -1,7 +1,6 @@
 function showQuestion(name,no) {
 
-    console.log(name);
-    console.log(no);
+    $('#exampleInputAnswer').val('');
 
     if(name === '자바') {
         name = 'java';
@@ -21,14 +20,14 @@ function showQuestion(name,no) {
             console.log("error");
         },
         success: function(returnJSON) {
-
             var object = returnJSON.data;
             var totalCount = returnJSON.totalCount;
 
+            var width = ((object.quizID) * ((object.quizID) / totalCount)) * 100 + '%';
+
             $('#questionTitle').html(object.quizInfo);
             $('#questionTitle').attr('data-id', object.quizID);
-
-            var width = ((object.quizID) * ((object.quizID) / totalCount)) * 100 + '%';
+            $('#questionTitle').attr('data-category', object.category);
 
             $('.progress-bar').css('width', width);
 
@@ -42,11 +41,13 @@ function submitAnswer() {
 
     var exampleInputAnswer = $('#exampleInputAnswer').val();
     var quizID = $('#questionTitle').attr('data-id');
+    var category = $('#questionTitle').attr('data-category');
 
 
     var param = {
         "inputAnswer" : exampleInputAnswer,
-        "quizID" : quizID
+        "quizID" : quizID,
+        "category" : category
     }
     console.log(param);
 
@@ -59,14 +60,20 @@ function submitAnswer() {
                 console.log("error");
             },
             success: function(returnJSON) {
-                console.log(returnJSON);
                 var object = returnJSON.data;
+                var totalCount = returnJSON.totalCount;
 
                 if(returnJSON.message == "correctAnswer") {
-                    console.log("정답처리");
-                    var no = parseInt(object.no) + 1;
-                    //일단 하드코딩 어떻게 할지는 다시 생각해보자
-                    showQuestion('자바',no);
+
+                    if(object.no === totalCount) {
+                        $('#mainContent').load('finishQuestion');
+                    } else {
+                        var no = parseInt(object.no) + 1;
+                        showQuestion(object.category,no);
+                    }
+
+                } else {
+                    console.log("정답이 틀렸습니다.");
                 }
 
             }
@@ -79,6 +86,11 @@ $('#answer').on('click', function() {
     submitAnswer();
 
 });
+
+/*$('#return').on('click', function() {
+    console.log('1');
+    $('#mainContent').load('/question');
+});*/
 
 /* ======================================================================================
  *  공통부분

@@ -26,6 +26,12 @@ public class QuestionController {
         return "question";
     }
 
+    @GetMapping("/finishQuestion")
+    public String javaQuestionFinishPage() {
+
+        return "finishQuestion";
+    }
+
     @PostMapping("/question/java")
     @ResponseBody
     public CommonResponse questionJava(@ModelAttribute Question question) {
@@ -35,7 +41,8 @@ public class QuestionController {
 
         question.setNo(question.getNo());
 
-        int count = questionService.selectCountJavaQuestion(question);
+
+        int count = questionService.selectCountQuestion(question);
         commonResponse.setData(selectJavaQuestion);
         commonResponse.setTotalCount(count);
 
@@ -53,6 +60,8 @@ public class QuestionController {
         System.out.println(inputAnswer);
 
         Answer selectAnswer = questionService.selectAnswer(answer);
+        int count = questionService.selectCountQuestion(answer);
+
         String answerKeyword = selectAnswer.getAnswerKeyword();
         int index = 0;
         String[] splitKeywords = answerKeyword.split(";");
@@ -71,6 +80,7 @@ public class QuestionController {
             commonResponse.setMessage("incorrectAnswer");
         }
         commonResponse.setData(selectAnswer);
+        commonResponse.setTotalCount(count);
 
         return commonResponse;
     }

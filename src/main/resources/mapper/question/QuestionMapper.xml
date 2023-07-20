@@ -8,8 +8,8 @@
         select * from quiz where category ='java' and no =#{no};
     </select>
 
-    <select id="selectCountJavaQuestion" resultType="int" parameterType="Question">
-        select count(*) from quiz where category ='java';
+    <select id="selectCountQuestion" resultType="int" parameterType="Question">
+        select count(*) from quiz where category = #{category};
     </select>
 
     <select id="selectAnswer" resultType="Answer" parameterType="Answer">
