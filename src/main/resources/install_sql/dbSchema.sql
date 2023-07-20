@@ -41,20 +41,23 @@ CREATE TABLE `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 INSERT INTO menu
-(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+(menu_code, menu_name, menu_gubun, parent_menu_id, menu_url, submenu_name)
 VALUES('0100', '퀴즈', 'A', '0100', NULL, NULL);
 INSERT INTO menu
-(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+(menu_code, menu_name, menu_gubun, parent_menu_id, menu_url, submenu_name)
 VALUES('0110', '자바', 'A', '0100', '/java/question', '문제풀기');
 INSERT INTO menu
-(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+(menu_code, menu_name, menu_gubun, parent_menu_id, menu_url, submenu_name)
 VALUES('0120', '스프링', 'A', '0100', NULL, '문제풀기');
 INSERT INTO menu
-(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
+(menu_code, menu_name, menu_gubun, parent_menu_id, menu_url, submenu_name)
 VALUES('0200', '관리자', 'U', '0200', NULL, NULL);
 INSERT INTO menu
-(menu_code, menu_name, menu_gubun, parentMenuID, menu_url, submenu_name)
-VALUES('0210', '회원정보', 'U', '0200', NULL, '계정정보;문제추');
+(menu_code, menu_name, menu_gubun, parent_menu_id, menu_url, submenu_name)
+VALUES('0210', '회원정보', 'U', '0200', '/account', '회원정보');
+INSERT INTO menu
+(menu_code, menu_name, menu_gubun, parent_menu_id, menu_url, submenu_name)
+VALUES('0220', '문제관리', 'U', '0200', NULL, '문제추가');
 # 회원정보 노출 정보
 update menu
    set menu_url = '/account'

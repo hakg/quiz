@@ -44,4 +44,3 @@
 
 <!-- event JavaScript -->
 <script src="/resources/static/js/account.js"></script>
-
