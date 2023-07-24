@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -89,6 +91,7 @@ public class AccountController {
     @ResponseBody
     public CommonResponse accountUpdate(@RequestBody UserDTO userDTO) {
         CommonResponse commonResponse = new CommonResponse();
+        List<UserDTO> userDTOList = new ArrayList<>();
 
         if (accountService.updateAccount(userDTO) <= 0) {
             commonResponse.setCode(400); // 나쁜 요청처리
@@ -96,6 +99,8 @@ public class AccountController {
         } else {
             commonResponse.setCode(200); // 요청 정상 응답
             commonResponse.setMessage("회원정보 수정이 완료되었습니다.");
+            userDTOList.add(userDTO);
+            commonResponse.setItems(userDTOList);
         }
         return commonResponse;
     }

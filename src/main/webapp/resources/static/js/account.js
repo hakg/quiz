@@ -59,36 +59,34 @@ function signupUser() {
 
 // 회원정보 수정 완료 버튼을 클릭했을 때 실행되는 함수
 function updateUser() {
-  // 이름, 이메일, 패스워드 값을 가져옵니다.
+
   const formData = {
-      userName: $('#userName'),
-      userId: $('#userId'),
-      password: $('#password'),
-      repeatPassword: $('#repeatPassword')
+      userName: $('#udtUserName').val(),
+      userId: $('#udtUserId').val(),
+      password: $('#udtPassword').val(),
+      repeatPassword: $('#udtRepeatPassword').val()
   }
 
   // 정규표현식 패턴
   const nameRegex = /^[가-힣]{2,4}$/; // 이름은 한글만 허용
   const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/; // 패스워드는 최소 8자 이상, 숫자,문자,특문 포함
 
-//  console.log(userName);
-  console.log(formData.userName);
-  if (!nameRegex.test(userName)) {
+  if (!nameRegex.test(formData.userName)) {
     alert('올바른 이름을 입력해주세요.');
-    userName.focus();
+    $('#udtUserName').focus();
     return;
   }
 
-  if (password != '' || repeatPassword != '') {
+  if (formData.password != '' || formData.repeatPassword != '') {
       if (!passwordRegex.test(formData.password)) {
         alert('올바른 패스워드를 입력해주세요.\n패스워드는 최소 8자 이상, 숫자, 문자, 특문 포함해야 합니다.');
-        password.focus();
+        $('#udtPassword').focus();
         return;
       }
 
       if (formData.password != formData.repeatPassword) {
         alert('패스워드를 확인해주세요.');
-        repeatPassword.focus();
+        $('#udtRepeatPassword').focus();
         return;
       }
   }
@@ -102,8 +100,9 @@ function updateUser() {
     success: function(response) {
         if (response.code == 200) {
             // 정상 처리 된 경우
-            alert(response.message);// 회원정보 수정 후 로그인 페이지로 리다이렉션
-            location.reload();
+            alert(response.message);
+            // 이름, 패스워드, 패스워드확인 초기화처리
+            console.log(response.items[0]);
         } else {
             alert(response.message);
         }
@@ -115,8 +114,6 @@ function updateUser() {
   });
 }
 
-// 로그인 버튼에 이벤트 리스너를 추가합니다.
-//$('#loginBtn').on('click', loginUser);
 // 회원가입 완료 버튼에 이벤트 리스너를 추가합니다.
 $('#signUpBtn').on('click', signupUser);
 // 회원정보 수정 완료 버튼 이벤트
