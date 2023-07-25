@@ -85,4 +85,18 @@ public class QuestionController {
         return commonResponse;
     }
 
+    @PostMapping("/answer/description")
+    @ResponseBody
+    public CommonResponse showAnswerDescription(@ModelAttribute Answer answer) {
+        CommonResponse commonResponse = new CommonResponse();
+
+        Answer selectAnswer = questionService.selectAnswer(answer);
+        int count = questionService.selectCountQuestion(answer);
+
+        commonResponse.setData(selectAnswer);
+        commonResponse.setTotalCount(count);
+
+        return commonResponse;
+    }
+
 }

@@ -74,6 +74,7 @@ function submitAnswer() {
 
                 } else {
                     console.log("정답이 틀렸습니다.");
+                    alert("정답이 틀렸습니다. 틀렸습니다.");
                 }
 
             }
@@ -86,6 +87,40 @@ $('#answer').on('click', function() {
     submitAnswer();
 
 });
+
+$('#showAnswer').on('click', function() {
+
+        var exampleInputAnswer = $('#exampleInputAnswer').val();
+        var quizID = $('#questionTitle').attr('data-id');
+        var category = $('#questionTitle').attr('data-category');
+
+
+        var param = {
+            "inputAnswer" : exampleInputAnswer,
+            "quizID" : quizID,
+            "category" : category
+        }
+        $.ajax({
+               type : 'POST',
+               dataType : 'JSON',
+               data : param,
+               url : '/answer/description',
+               error:function() {
+                   console.log("error");
+               },
+               success: function(returnJSON) {
+                   var object = returnJSON.data;
+                   var totalCount = returnJSON.totalCount;
+
+                   $('#showDescription').html(object.answerDesc);
+
+               }
+
+           });
+
+
+});
+
 
 /*$('#return').on('click', function() {
     console.log('1');
