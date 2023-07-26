@@ -5,18 +5,44 @@
 <mapper namespace="com.quiz.apps.question.mapper.QuestionMapper">
 
     <select id="selectJavaQuestion" resultType="Question" parameterType="Question">
-        select * from quiz where category ='java' and no =#{no};
+        SELECT *
+          FROM QUIZ
+         WHERE CATEGORY = 'java'
+           AND NO = #{no}
     </select>
 
     <select id="selectCountQuestion" resultType="int" parameterType="Question">
-        select count(*) from quiz where category = #{category};
+        SELECT COUNT(*)
+          FROM QUIZ
+         WHERE CATEGORY = #{category}
     </select>
 
     <select id="selectAnswer" resultType="Answer" parameterType="Answer">
-
         SELECT *
-        FROM ANSWER a INNER JOIN QUIZ q ON a.QUIZ_ID = q.QUIZ_ID
-        WHERE a.QUIZ_ID = #{quizID};
-
+          FROM ANSWER A INNER JOIN QUIZ U
+               ON A.QUIZ_ID = Q.QUIZ_ID
+         WHERE A.QUIZ_ID = #{quizID}
     </select>
+
+    <insert id="insertQuestion" parameterType="question">
+        INSERT
+          INTO QUIZ
+             ( QUIZ_ID
+             , CATEGORY
+             , QUIZ_INFO
+             , INSERT-ID
+             , INSERT_DATE
+             , MODIFY_ID
+             , MODIFY_DATE
+             , NO )
+        VALUES
+             ( #{quizID, jdbcType=NUMERIC}
+             , #{category, jdbcType=VARCHAR}
+             , #{quizInfo, jdbcType=VARCHAR}
+             , #{insertId, jdbcType=VARCHAR}
+             , #{insertDate, jdbcType=DATE}
+             , #{modifyId, jdbcType=VARCHAR}
+             , #{modifyDate, jdbcType=DATE}
+             , #{no, jdbcType=NUMERIC} )
+    </insert>
 </mapper>

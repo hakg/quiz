@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface QuestionService {
 
-    public Question selectJavaQuestion(Question question);
+    Question selectJavaQuestion(Question question);
 
-    public int selectCountQuestion(Question question);
+    int selectCountQuestion(Question question);
 
-    public Answer selectAnswer(Answer answer);
+    Answer selectAnswer(Answer answer);
+
+    int insertQuestion(Question question);
 }

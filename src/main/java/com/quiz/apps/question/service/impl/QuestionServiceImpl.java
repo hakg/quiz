@@ -29,4 +29,9 @@ public class QuestionServiceImpl implements QuestionService {
     public Answer selectAnswer(Answer answer) {
         return questionMapper.selectAnswer(answer);
     }
+
+    @Override
+    public int insertQuestion(Question question) {
+        return questionMapper.insertQuestion(question);
+    }
 }
