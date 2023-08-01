@@ -45,4 +45,9 @@
              , #{modifyDate, jdbcType=DATE}
              , #{no, jdbcType=NUMERIC} )
     </insert>
+
+    <select id="selectQuiz" resultType="Question">
+        SELECT *
+          FROM QUIZ
+    </select>
 </mapper>

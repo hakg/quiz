@@ -7,6 +7,7 @@ import com.quiz.apps.question.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +31,14 @@ public class QuestionController {
     public String javaQuestionFinishPage() {
 
         return "finishQuestion";
+    }
+
+    @GetMapping("/quizRegister")
+    public String quizRegisterPage(Model model) {
+        List<Question> quizList = questionService.selectQuiz();
+        model.addAttribute("quizList", quizList);
+
+        return "quizRegister";
     }
 
     @PostMapping("/question/java")

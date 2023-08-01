@@ -16,4 +16,6 @@ public interface QuestionMapper {
     Answer selectAnswer(Answer answer);
 
     int insertQuestion(Question question);
+
+    List<Question> selectQuiz();
 }

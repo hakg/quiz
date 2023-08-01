@@ -14,4 +14,6 @@ public interface QuestionService {
     Answer selectAnswer(Answer answer);
 
     int insertQuestion(Question question);
+
+    List<Question> selectQuiz();
 }

@@ -34,4 +34,9 @@ public class QuestionServiceImpl implements QuestionService {
     public int insertQuestion(Question question) {
         return questionMapper.insertQuestion(question);
     }
+
+    @Override
+    public List<Question> selectQuiz() {
+        return questionMapper.selectQuiz();
+    }
 }
