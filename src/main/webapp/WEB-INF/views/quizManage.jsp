@@ -2,8 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
-    <!-- event JavaScript -->
-    <script src="/resources/static/js/account.js"></script>
+    <style>
+        .custom-heading {
+            text-align: left;
+        }
+    </style>
 </head>
 
 <div class="text-center">
@@ -13,8 +16,11 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Quiz List</h6>
+        <div class="card-header py-3 d-flex justify-content-end">
+            <h6 class="m-0 font-weight-bold text-primary custom-heading">Quiz List</h6>
+            <button class="btn btn-primary text-right" onclick="performAction('registration')">등록</button>
+            <button class="btn btn-primary text-right" onclick="performAction('modification')">수정</button>
+            <button class="btn btn-primary text-right" onclick="performAction('deletion')">삭제</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">

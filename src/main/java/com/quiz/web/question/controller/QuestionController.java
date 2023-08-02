@@ -33,12 +33,12 @@ public class QuestionController {
         return "finishQuestion";
     }
 
-    @GetMapping("/quizRegister")
-    public String quizRegisterPage(Model model) {
+    @GetMapping("/quizManage")
+    public String quizManage(Model model) {
         List<Question> quizList = questionService.selectQuiz();
         model.addAttribute("quizList", quizList);
 
-        return "quizRegister";
+        return "quizManage";
     }
 
     @PostMapping("/question/java")
