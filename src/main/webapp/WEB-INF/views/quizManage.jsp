@@ -14,11 +14,38 @@
 </div>
 <div class="container-fluid">
 
-    <!-- DataTales Example -->
+    <!-- Registration Modal -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registrationModalLabel">새로운 퀴즈 등록</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            <input type="text" class="form-control" id="category" name="category" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quizInfo">Quiz Info:</label>
+                            <textarea class="form-control" id="quizInfo" name="quizInfo" rows="4" required></textarea>
+                        </div>
+                        <!-- Add other fields as needed -->
+                        <button type="button" class="btn btn-primary" onclick="submitRegistrationForm()">등록</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz List Table -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-end">
-            <h6 class="m-0 font-weight-bold text-primary custom-heading">Quiz List</h6>
-            <button class="btn btn-primary text-right" onclick="performAction('registration')">등록</button>
+            <button class="btn btn-primary text-right" data-toggle="modal" data-target="#registrationModal">등록</button>
             <button class="btn btn-primary text-right" onclick="performAction('modification')">수정</button>
             <button class="btn btn-primary text-right" onclick="performAction('deletion')">삭제</button>
         </div>
@@ -54,3 +81,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    function performAction(action) {
+        // Implement your code for modification and deletion here
+    }
+
+    function submitRegistrationForm() {
+        var formData = {
+            category: $('#category').val(),
+            quizInfo: $('#quizInfo').val()
+            // Add other form fields as needed
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: 'QuizRegistrationServlet', // URL to handle the form submission
+            data: formData,
+            success: function (response) {
+                // Refresh the quiz list after successful registration
+                $('#dataTable tbody').html(response);
+                $('#registrationModal').modal('hide');
+            },
+            error: function (error) {
+                // Handle errors, if any
+                console.error('Error submitting the form: ' + error);
+            }
+        });
+    }
+</script>
