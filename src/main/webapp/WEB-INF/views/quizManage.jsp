@@ -45,9 +45,10 @@
     <!-- Quiz List Table -->
     <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex justify-content-end">
+            <button class="btn btn-primary text-right" onclick="performAction('select')">조회</button>
             <button class="btn btn-primary text-right" data-toggle="modal" data-target="#registrationModal">등록</button>
-            <button class="btn btn-primary text-right" onclick="performAction('modification')">수정</button>
-            <button class="btn btn-primary text-right" onclick="performAction('deletion')">삭제</button>
+            <button class="btn btn-primary text-right" onclick="performAction('update')">수정</button>
+            <button class="btn btn-primary text-right" onclick="performAction('delete')">삭제</button>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -84,23 +85,12 @@
 
 <script>
     function performAction(action) {
-        // Implement your code for modification and deletion here
-    }
-
-    function submitRegistrationForm() {
-        var formData = {
-            category: $('#category').val(),
-            quizInfo: $('#quizInfo').val()
-            // Add other form fields as needed
-        };
-
         $.ajax({
-            type: 'POST',
-            url: 'QuizRegistrationServlet', // URL to handle the form submission
-            data: formData,
+            type: 'GET',
+            url: '/quizManage', // URL to handle the form submission
             success: function (response) {
                 // Refresh the quiz list after successful registration
-                $('#dataTable tbody').html(response);
+                $('#mainContent').html(response);
                 $('#registrationModal').modal('hide');
             },
             error: function (error) {
@@ -109,4 +99,22 @@
             }
         });
     }
+
+    function submitRegistrationForm() {
+            var formData = {
+                'category': $('#category').val(),
+                'quizInfo': $('#quizInfo').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/quizInsert', // URL to handle the form submission
+                data: JSON.stringify(formData),
+                success: function (response) {
+                    $('#registrationModal').modal('hide');
+                },
+                error: function (error) {
+                }
+            });
+        }
 </script>

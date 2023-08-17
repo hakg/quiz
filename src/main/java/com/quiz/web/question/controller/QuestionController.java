@@ -4,13 +4,12 @@ import com.quiz.apps.common.CommonResponse;
 import com.quiz.apps.question.model.Answer;
 import com.quiz.apps.question.model.Question;
 import com.quiz.apps.question.service.QuestionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -38,6 +37,14 @@ public class QuestionController {
         model.addAttribute("quizList", quizList);
 
         return "quizManage";
+    }
+
+    @PostMapping("/quizInsert")
+    @ResponseBody
+    public String quizInsert(@ModelAttribute Question question) {
+        questionService.insertQuestion(question);
+
+        return "redirect:/quizManage";
     }
 
     @PostMapping("/question/java")

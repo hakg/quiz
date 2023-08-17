@@ -25,12 +25,12 @@
     </select>
 
     <insert id="insertQuestion" parameterType="question">
-        INSERT
+        INSERT /* QuestionMapper.xml - insertQuestion by QuestionController */
           INTO QUIZ
              ( QUIZ_ID
              , CATEGORY
              , QUIZ_INFO
-             , INSERT-ID
+             , INSERT_ID
              , INSERT_DATE
              , MODIFY_ID
              , MODIFY_DATE
