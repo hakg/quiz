@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <head>
     <style>
@@ -71,9 +72,9 @@
                                 <td>${question.category}</td>
                                 <td>${question.quizInfo}</td>
                                 <td>${question.insertId}</td>
-                                <td>${question.insertDate}</td>
+                                <td><fmt:formatDate value="${question.insertDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                 <td>${question.modifyId}</td>
-                                <td>${question.modifyDate}</td>
+                                <td><fmt:formatDate value="${question.modifyDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                             </tr>
                         </c:forEach>
                     </tbody>
@@ -89,12 +90,10 @@
             type: 'GET',
             url: '/quizManage', // URL to handle the form submission
             success: function (response) {
-                // Refresh the quiz list after successful registration
                 $('#mainContent').html(response);
                 $('#registrationModal').modal('hide');
             },
             error: function (error) {
-                // Handle errors, if any
                 console.error('Error submitting the form: ' + error);
             }
         });

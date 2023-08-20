@@ -47,6 +47,7 @@
     </insert>
 
     <select id="selectQuiz" resultType="Question">
+        /* QuestionMapper.xml - selectQuiz by QuestionController */
         SELECT *
           FROM QUIZ
     </select>

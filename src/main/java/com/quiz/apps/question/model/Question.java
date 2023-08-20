@@ -2,7 +2,7 @@ package com.quiz.apps.question.model;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 @Data
 public class Question {
@@ -11,8 +11,8 @@ public class Question {
     private String category;
     private String quizInfo;
     private String insertId;
-    private Date insertDate;
+    private Timestamp insertDate;
     private String modifyId;
-    private Date modifyDate;
+    private Timestamp modifyDate;
     private int no;
 }
