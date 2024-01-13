@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.5.3/dist/vue-router.js"></script>
+</head>
+<body>
+<!-- Vue.js를 사용한 내용 작성 -->
+<div id="app">
+    <app-header v-bind:propsdata="num"></app-header>
+    <app-content v-on:pass="deliverNum"></app-content>
+</div>
+
+<!-- Vue 인스턴스 생성 및 사용 -->
+<script>
+        var appHeader = {
+            template: '<div>header</div>',
+            props : ['propsdata']
+        }
+
+        var appContent = {
+            template: '<div>content<button v-on:click="passNum">pass</button></div>',
+            methods: {
+                passNum: function() {
+                    this.$emit('pass', 10);
+                }
+            }
+        }
+
+        var router = new VueRouter({
+
+        });
+
+        new Vue({
+            el: '#app',
+            router: router,
+            data: {
+                num : 10
+            },
+            //지역 컴포넌트 등록 방식
+            components: {
+                //'컴포넌트 이름' : 컴포넌트 내용,
+                'app-header': appHeader,
+                'app-content': appContent
+            },
+            methods: {
+                deliverNum: function(value) {
+                    this.num = value
+                }
+            }
+        });
+    </script>
+</body>
+</html>
