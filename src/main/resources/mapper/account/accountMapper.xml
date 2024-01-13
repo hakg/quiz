@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.quiz.apps.account.mapper.AccountMapper">
+
+    <insert id="insertAccount" parameterType="UserDTO">
+        INSERT
+          INTO USER
+             ( USER_ID
+             , USER_NAME
+             , PASSWORD
+             , USER_ROLE
+             , USER_STATUS
+             , LAST_LOGIN_DATE
+             , PASSWORD_UPDATE_DATE
+             , INSERT_ID
+             , INSERT_DATE
+             , MODIFY_ID
+             , MODIFY_DATE )
+        VALUES
+             ( #{userId, jdbcType=VARCHAR}
+             , #{userName, jdbcType=VARCHAR}
+             , #{password, jdbcType=VARCHAR}
+             , DEFAULT /* USER_ROLE 'USER' */
+             , DEFAULT /* USER_STATUS '1' */
+             , DEFAULT /* LAST_LOGIN_DATE 'NULL' */
+             , NOW()
+             , 'SYSTEM'
+             , NOW()
+             , 'SYSTEM'
+             , NOW() )
+    </insert>
+
+    <select id="selectAccountCheck" resultType="UserDTO">
+        SELECT UE.*
+          FROM USER UE
+         WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectAccountDupCheck" resultType="int">
+        SELECT COUNT(1)
+          FROM USER UE
+         WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
+    </select>
+
+    <update id="updateAccount">
+        UPDATE USER UE
+           SET UE.USER_NAME = #{userName, jdbcType=VARCHAR}
+             <if test="password != null and password != ''">
+                 , UE.PASSWORD = #{password, jdbcType=VARCHAR}
+                 , UE.PASSWORD_UPDATE_DATE = NOW()
+             </if>
+             , UE.MODIFY_DATE = NOW()
+         WHERE UE.USER_ID = #{userId, jdbcType=VARCHAR}
+    </update>
+
+</mapper>

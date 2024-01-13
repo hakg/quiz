@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!-- 설정 내용 -->
+    <settings>
+        <!-- XML 조회쿼리의 값을 카멜표기로 변경 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <typeAliases>
+          <!-- XML에서 객체의 풀경로를 미리 지정하여 Type에서 객체만 선언하여 사용 -->
+        <package name="com.quiz.apps.account.model"/>
+        <package name="com.quiz.apps.menu.model"/>
+        <package name="com.quiz.apps.question.model"/>
+    </typeAliases>
+</configuration>
+

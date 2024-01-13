@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <!-- Appenders -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d %5p [%c] %m%n</Pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger -->
+    <logger name="com.quiz" level="INFO" appender-ref="console" />
+    <logger name="jdbc.sqlonly" level="OFF" appender-ref="console" /> <!-- SQL쿼리노출 -->
+    <logger name="jdbc.audit" level="OFF" appender-ref="console" />
+    <logger name="jdbc.connection" level="OFF" appender-ref="console" />
+    <logger name="jdbc.resultset" level="OFF" appender-ref="console" />
+    <logger name="jdbc.resultsettable" level="OFF" appender-ref="console" />
+    <logger name="jdbc.sqltiming" level="INFO" appender-ref="console" /> <!-- SQL쿼리노출(실행시간포함) -->
+
+    <!-- Root Logger -->
+    <root level="INFO">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
